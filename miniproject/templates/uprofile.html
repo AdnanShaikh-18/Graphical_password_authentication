@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container text-center">
+    
+    <br><br>
+<div class="row">
+    
+    <div class="col-7">
+      <b><i><u>{{profile.user}}'s Tweets</u></i></b>
+        {% for t in tweets %}
+        <div class="alert alert-success" role="alert">
+            {{t.body}}~<a href="{% url 'uprofile' t.user.id %}" >@{{t.user.username}}</a>
+
+            <br>{{t.date_created|date:'DATETIME_FORMAT'}}
+          </div><hr>
+          {% endfor %}
+
+    </div>
+    <div class="col-5">
+
+      <div class="alert alert-warning" role="alert">
+       
+
+      <div class="card" style="width: 18rem;">
+        {% if profile.gender == "male" %}
+        <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="...">
+        {% else %}
+        <img src="{% static 'images/girl.png' %}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">@{{profile.user}}</h5>
+          <p class="card-text">~~bio <br>{{profile.bio}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="{{profile.social_media_url}}" target="_blank">{{profile.social_media_url}} </a></li>
+          
+        </ul>
+        
+    
+    </div>
+
+    </div>
+</div>
+{% endblock %}

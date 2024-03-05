@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+
+    <!--  -->
+    <div class="col-5">
+        
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder="enter your username" name="username" required>
+                
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">First name</label>
+                <input type="text" class="form-control" name="first_name">
+                
+              </div>
+        
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Last name</label>
+              <input type="text" class="form-control"  name="last_name">
+              
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email">
+                
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password1">
+            </div>
+            <HR>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Re-enter Password</label>
+                <input type="password" class="form-control" name="password2">
+              </div>
+            
+           
+    </div>
+
+    <!-- THE  GRAPHICAL AUTHENTICATION  -->
+
+    <div class="col-6">
+        <div class="row gy-3 my-3">
+        {% for c in color1 %}
+    
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+                
+                <input type="radio" value="{{c.name}}" name="color1" required>
+                <img src="{{c.image.url}}" alt="{{c.name}}">
+                    
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+    <hr>
+    <div class="row gy-3 my-3">
+    
+    
+        {% for c2 in color2 %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+                <input type="radio" value="{{c2.name}}" name="color2" required> 
+                <img src="{{c2.image.url}}" alt="{{c2.name}}">
+                
+                    
+            </div>
+        </div>
+        {% endfor %}
+    
+    </div> 
+    <hr>
+    <div class="row gy-3 my-3">
+    
+        {% for c3 in color3 %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+                <input type="radio" value="{{c3.name}}" name="color3" required>
+                <img src="{{c3.image.url}}" alt="{{c3.name}}">
+               
+                    
+            </div>
+        </div>
+        {% endfor %}
+       
+    
+    </div> 
+    
+    
+    <button type="submit" class="btn btn-outline-success">REGISTER</button>
+    
+    
+    </form>
+  </div>
+ 
+
+    </div>
+
+</div>
+
+
+{% endblock %}

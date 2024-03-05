@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+
+<div class="container text-center">
+  
+    <div class="row">
+
+        <div class="col-7">
+         <B><I>RECENT TWEETS</I></B>
+            {% for t in tweet %}
+            <div class="alert alert-success" role="alert">
+                {{t.body}}~<a href="{% url 'uprofile' t.user.id %}" >@{{t.user.username}}</a>
+
+                <br>{{t.date_created|date:'DATETIME_FORMAT'}}
+              </div><hr>
+              {% endfor %}
+   
+        </div>
+
+        <div class="col-5">
+          <BR>
+          {% if user.is_authenticated %}
+            <form method="post" action="{% url 'home' %}">
+                {% csrf_token %} 
+            <div class="alert alert-primary" role="alert">
+            
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">TWEET ASAP</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="inputtweet" required></textarea><br>
+                <button type="submit" class="btn btn-outline-success">TWEET</button>
+              </div>
+            </div>
+        </form>
+        {% else %}
+        <h1>LOGIN TO TWEET </h1>
+        <a class="btn  btn-primary" href="{% url 'login' %}">LOGIN</a>
+        {% endif %}
+
+        </div>
+
+
+
+
+
+    </div>
+
+        
+</div>
+
+
+{% endblock %}

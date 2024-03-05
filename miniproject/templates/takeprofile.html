@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <!-- <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+  <!-- </div> -->
+</div>
+            
+            <div class="col-4">
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                   <br>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">  You Are One Step Away<br>from creating an account</h5>
+                        <p class="card-text">
+                <form method="post" action="{% url 'takeprofile' %}">
+                    {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Social media url</label>
+                    <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="social media account link" name="accurl" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Tell us something about yourself</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="enter bio" name="bio" required ></textarea>
+                </div>
+                <label>Select gender</label><br>
+                    <div class="form-check form-check-inline">
+                        
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+
+                      <button type="submit" class="btn btn-outline-success">Create</button>
+                </form>
+            </p>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
